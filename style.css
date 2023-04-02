@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap');
+@import url('./icons/style.css');
+
+:root {
+  --accent: #fb991b;
+  --bg: #2b2b35;
+  --bg_inset: #23212c;
+  --size: 60px;
+  --radius: 16px;
+  --shadow: -4px -4px 4px #ffffff17, 4px 4px 4px rgba(0,0,0,0.3);
+  --shadow_inset: inset 4px 4px 4px rgba(0,0,0,0.3), inset -4px -4px 4px #ffffff0f;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222429;
+  color: var(--accent);
+  font-family: 'Nunito', sans-serif;
+  display: grid;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Grid */
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 32px;
+  padding: 64px;
+}
+.inner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 32px;
+}
+.grid > div > *:not(:last-child),
+.inner-grid > div > *:not(:last-child) {
+  margin-bottom: 32px;
+}
+/* Flexbox */
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* Themes */
+.default {
+  color: #81818d;
+  background-color: var(--bg);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+.press {
+  color: #4e4e58;
+  box-shadow: var(--shadow_inset);
+  background-color: var(--bg_inset);
+  font-weight: 200;
+}
+.default:hover,
+.hover {
+  background-color: var(--accent);
+  color: white;
+  box-shadow: var(--shadow);
+}
+.active {
+  color: var(--accent);
+  background-color: var(--bg);
+  box-shadow: var(--shadow);
+}
+.icon {
+  width: var(--size);
+  padding: 0 !important;
+}
+/* Theme for input */
+.default::-webkit-input-placeholder {
+  color: #81818d;
+}
+.press::-webkit-input-placeholder {
+  color: #4e4e58;
+}
+.hover::-webkit-input-placeholder {
+  color: white;
+}
+.active::-webkit-input-placeholder {
+  color: var(--accent);
+}
+
+/* Button */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 24px;
+  font-weight: 100;
+}
+.button {
+  cursor: pointer;
+  height: var(--size);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 0 3vw;
+  border-radius: var(--radius);
+}
+
+/* Input */
+input {
+  color: white !important;
+}
+.input {
+  height: var(--size);
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  border-radius: var(--radius);
+}
+
+/* Switch */
+.switch {
+
+}
+.switch input {
+  display: none;
+}
+.switch div {
+  cursor: pointer;
+  position: relative;
+  width: calc(var(--size) * 2);
+  height: calc(var(--size) / 2);
+  margin-top: calc(var(--size) / 4);
+  box-shadow: var(--shadow_inset);
+  background-color: var(--bg_inset);
+  border-radius: var(--radius);
+  transition: all 0.3s ease-in-out;
+}
+.switch div::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -50%;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  background-color: var(--bg);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease-in-out;
+}
+.switch input:checked + div {
+  background-color: var(--accent);
+}
+.switch input:checked + div::after {
+  left: 50%;
+}
+
+/* Panel */
+.panel {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  text-align: right;
+}
+.panel:hover {
+  color: #81818d;
+  background-color: var(--bg);
+}
+.panel__img {
+  --size: 115px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: calc(var(--radius) / 2);
+}
+.panel__label {
+  font-size: 22px;
+  font-weight: 100;
+}
+.panel__price {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Radio Buttons */
+.radio input {
+  display: none;
+}
+.radio div {
+  cursor: pointer;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  box-shadow: var(--shadow_inset);
+  background-color: var(--bg_inset);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.radio div::after {
+  --offset: 25%;
+  content: '';
+  position: absolute;
+  top: var(--offset);
+  right: var(--offset);
+  bottom: var(--offset);
+  left: var(--offset);
+  border-radius: var(--size);
+  background-color: var(--bg);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease-in-out;
+}
+.radio :checked + div {
+  background-color: var(--bg);
+  box-shadow: var(--shadow);
+}
+.radio :checked + div::after {
+  background: var(--accent);
+}
+.radio_square div {
+  border-radius: var(--radius);
+}
+.radio_square div::after {
+  border-radius: calc(var(--radius) / 2);
+}
+
+/* Round progress */
+.round-progress {
+  --size: 194px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  position: relative;
+}
+.round-progress div {
+  position: absolute;
+  top: 11.5%;
+  left: 11.5%;
+  width:78%;
+  height:78%;
+  border-radius:50%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-size: 32px;
+}
+.round-progress svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: rotate(-90deg);
+}
+.round-progress circle {
+  fill: transparent;
+  stroke: var(--accent);
+  stroke-width: 20px;
+  stroke-dasharray: 200 314;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Progress */
+.progress {
+  width: 100%;
+  height: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.progress div {
+  height: 100%;
+  background-color: var(--accent);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Search */
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.search {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-radius: var(--radius);
+}
+.search input {
+  text-align: right;
+  color: #4e4e58;
+  background: transparent;
+}
+.search input::-webkit-input-placeholder {
+  color: #4e4e58;
+}
+.search i {
+  font-size: 1.6em;
+  margin-right: 30%;
+}
+
+i.ic_arrow_left,
+i.ic_arrow_right {
+  font-size: 1.6em;
+}
+
+/* Tooltip */
+.tooltip {
+  padding: 16px 32px;
+  font-size: 32px;
+  border-radius: var(--radius);
+  font-weight: 200;
+  position: relative;
+  box-shadow: -4px -4px 4px #ffffff17;
+  background: var(--bg);
+  filter: drop-shadow(4px 4px 4px rgba(0,0,0,0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 76px;
+}
+.tooltip::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: -30%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-top: 13px solid var(--bg);
+}
+
+/* Player */
+.player {
+}
+.player__progress {
+  display: flex;
+  height: 8px;
+  margin-bottom: 32px;
+  border-radius: 100px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.player__progress div {
+  background: var(--accent);
+}
+.player__main {
+  display: flex;
+  justify-content: space-between;
+}
+.player__time {
+  font-size: 18px;
+  font-weight: 100;
+}
+.player__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.player__actions > * {
+  width: calc(var(--size) / 1.4);
+  height: calc(var(--size) / 1.4);
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+/* Message */
+.message {
+  flex-grow: 1;
+  padding: 24px;
+  color: #81818d;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
+  border-radius: var(--radius);
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.2em;
+  position: relative;
+  margin-left: 20px;
+  filter: drop-shadow(-4px -4px 4px #ffffff17)
+}
+.message::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -5px;
+  bottom: 0;
+  width: 80px;
+  height: 50px;
+  background-color: var(--bg);
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  transform: skewX(322deg);
+  z-index: -2;
+}
+.message::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bg);
+  border-radius: var(--radius);
+  z-index: -1;
+}
+.message_active {
+  color: white;
+  margin-left: 0;
+  margin-right: 20px;
+}
+.message_active::before {
+  left: initial;
+  right: -5px;
+  transform: skewX(38deg);
+}
+.message_active::before,
+.message_active::after {
+  background-color: var(--accent);
+}
